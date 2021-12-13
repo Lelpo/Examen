@@ -1,0 +1,19 @@
+1) Con el comando 'django-admin startproject proyecto' se crea el proyecto y luego con 'python3 manage.py startapp examen' se crea la aplicación.
+
+2) La base de dato la creo en el makefile directamente y añado debajo de DATABASES en settings.py lo siguiente:
+import dj_database_url
+db_from_env = dj_database_url.config(default='postgres://alumnodb:alumnodb@localhost:5432/examen', conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
+3) Los modelos se crean en la carpeta examen dentro del fichero models.py, todos heredan de models.Model y se definen sus atributos correspondientes.
+
+4) Creé un fichero poblar.py dentro de /examen/management/commands/ definiendo todos los objetos que se solicitaban.
+
+5) Desde /admin/ se puede comprobar que los objetos se crea correctamente.
+
+6) Definí la dirección corespondiente en urls.py y luego en el views de examen escribí la función para mostrar las reservas de un socio dado su id.
+
+7) Creeé un test y verifiqué que devuelve la única reserva del usuario 1001.
+
+8) Desplegué la aplicación en Heroku y la URL es:
+https://afternoon-earth-56568.herokuapp.com/
